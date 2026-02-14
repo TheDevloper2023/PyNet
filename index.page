@@ -1,0 +1,38 @@
+@title Terminal Engine Stress Test
+
+# --- 1. NAMED COLORS ---
+{FG_RED}This is Red Text{/FG_RED}
+{FG_B_GREEN}This is Bright Green Text{/FG_B_GREEN}
+{BG_BLUE}{FG_WHITE} White on Blue Background {/FG_WHITE}{/BG_BLUE}
+{FG_MAGENTA}Standard Magenta{/FG_MAGENTA} vs {FG_B_MAGENTA}Bright Magenta{/FG_B_MAGENTA}
+
+
+// this a comment
+# --- 2. RICH TEXT FORMATTING ---
+**This is Bold**
+*This is Italic*
+_This is Underlined_
+!!This is Blinking (if supported)!!
+~This is Strikethrough~
+::This is Dim/Faded Text::
+^^This is Overlined^^
+
+# --- 3. NESTED STYLES (The Real Test) ---
+{FG_CYAN}**Bold Cyan**{/FG_CYAN}
+{BG_YELLOW}{FG_BLACK}_Underlined Black on Yellow_{/FG_BLACK}{/BG_YELLOW}
+**Bold text with a {FG_RED}Red Word{/FG_RED} inside**
+
+# --- 4. CUSTOM 256-COLOR IDS ---
+{C_FG_208}Orange (ID 208){/C_FG_208}
+{C_FG_135}Purple (ID 135){/C_FG_135}
+{C_BG_46}{FG_BLACK} Black on Neon Green (ID 46) {/C_BG_46}
+
+# --- 5. TRUE COLOR (RGB) ---
+{C_FG_255_105_180}Hot Pink RGB (255, 105, 180){/C_FG_255_105_180}
+{C_FG_0_255_255}Pure Aqua RGB (0, 255, 255){/C_FG_0_255_255}
+{C_BG_123_45_67}{FG_WHITE} Custom Maroon BG {/FG_WHITE}{/C_BG_123_45_67}
+
+
+@input TARGET_IP Please enter target IP: 
+
+{FG_RED}SCANNING $TARGET_IP...{/FG_RED}
