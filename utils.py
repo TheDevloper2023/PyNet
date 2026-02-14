@@ -157,3 +157,35 @@ class Colors:
         text = re.sub(r'\{/\w+\}', "[0m", text)
 
         return text
+    
+
+class Wrapper:
+    """
+    Wrapper for the current markdown system.
+
+    You kinda use it like this:
+
+    wrapper = Wrapper()
+    wrapper("Text to you want to render")
+    """
+    def __init__(self):
+        self.vars = {}
+
+        self.cmds = Commands()
+        self.richtxt = RichText()
+        self.cols = Colors()
+    
+
+    def __call__(self, line):
+        if line.startswith("@"):
+            self.cmds.run(line, self.vars)
+            
+        line = re.sub(r'\$(\w+)', lambda m: str(self.vars.get(m.group(1), '$'+m.group(1))), line)
+        
+        line = re.sub(r';;.*$', '', line)
+
+
+        text = self.cols.run(line)
+        text = self.richtxt.run(text)  
+
+        return text 
